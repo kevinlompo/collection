@@ -9,16 +9,16 @@ import static java.lang.System.in;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int monTab1 [] = {2,8,16,4,7,54,9,20,5,17};
-        int monTab2 [] = {30,40,50,99,56};
-        int res [] = new int[monTab1.length + monTab2.length];
+        int monTab1 [] = {2,8,16,4,7,54,9,20,5,17}; // 1er tableau
+        int monTab2 [] = {30,40,50,99,56}; // 2ème tableau
+        int result [] = new int[monTab1.length + monTab2.length];
         int pos = 0;
         int min = monTab1[0];
         int max = monTab1[0];
         Scanner sc  = new Scanner(in);
         //BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-        int s;
-        boolean b = true;
+        int saisie;
+
 
         System.out.print("1er Tableau avant triage : ");
         System.out.print(Arrays.toString(monTab1));
@@ -39,36 +39,43 @@ public class Main {
         System.out.print("Le tableau concatener : ");
 
         for (int i: monTab1){
-            res[pos] = i;
+            result[pos] = i;
             pos++;
         }
         for (int i: monTab2){
-            res[pos] = i;
+            result[pos] = i;
             pos++;
         }
-        System.out.print(Arrays.toString(res) + " ");
+        System.out.print(Arrays.toString(result) + " ");
         System.out.print("\nLe tableau concatener trié : ");
-        Arrays.sort(res);
-        System.out.print(Arrays.toString(res) + " ");
+        Arrays.sort(result);
+        System.out.print(Arrays.toString(result) + " ");
         System.out.print("\nEntrer une valeur entière : ");
 
-        while (b){
+        while (sc.hasNext()){
             try{
-                s =  sc.nextInt();
-                for (int i = 0; i< res.length; i++){
-                    if (s == res[i]){
-                        System.out.println(s + " existe dans le tableau");
-                        res[i] = s*5;
-                        break;
-                    }
-                    else if(i == res.length -1) System.out.println(s + " n'existe pas dans le tableau");
+                saisie =  sc.nextInt();
+                if(isIn(result, saisie)){
+                    System.out.println(saisie + " existe dans le tableau");
                 }
-                b = false;
+                else{
+                    System.out.println(saisie + " n'existe pas dans le tableau");
+                }
+                break;
             } catch (Exception e) {
                 System.out.print("Entrer que des entiers : ");
                 sc.next();
             }
         }
-        System.out.print(Arrays.toString(res) + " ");
+        System.out.print(Arrays.toString(result) + " ");
+    }
+    public static boolean isIn(int[] result, int saisie){
+        for (int i = 0; i < result.length; i++){
+            if (saisie == result[i]){
+                result[i] = saisie*5;
+                return true;
+            }
+        }
+        return false;
     }
 }
