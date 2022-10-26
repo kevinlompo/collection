@@ -9,15 +9,15 @@ import static java.lang.System.in;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int monTab1 [] = {2,8,16,4,7,54,9,20,5,17}; // 1er tableau
-        int monTab2 [] = {30,40,50,99,56}; // 2ème tableau
-        int result [] = new int[monTab1.length + monTab2.length];
+        int[] monTab1 = {2,8,16,4,7,54,9,20,5,17}; // 1er tableau
+        int[] monTab2 = {30,40,50,99,56}; // 2ème tableau
+        int[] result = new int[monTab1.length + monTab2.length];
         int pos = 0;
         int min = monTab1[0];
         int max = monTab1[0];
         Scanner sc  = new Scanner(in);
         //BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-        int saisie;
+        int saisie; // saisie utilisateur
 
 
         System.out.print("1er Tableau avant triage : ");
