@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,9 +14,8 @@ public class Main {
         int pos = 0;
         int min = monTab1[0];
         int max = monTab1[0];
-        Scanner sc  = new Scanner(in);
-        //BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-        int saisie; // saisie utilisateur
+        BufferedReader bf = new BufferedReader(new InputStreamReader(in));
+       int saisie = 0;// saisie utilisateur
 
 
         System.out.print("1er Tableau avant triage : ");
@@ -51,8 +49,9 @@ public class Main {
         Arrays.sort(result);
         System.out.print(Arrays.toString(result) + " ");
         System.out.print("\nEntrer une valeur entière : ");
+        saisie(saisie, result);
 
-        while (sc.hasNext()){
+    /*    while (sc.hasNext()){
             try{
                 saisie =  sc.nextInt();
                 if(isIn(result, saisie)){
@@ -66,16 +65,30 @@ public class Main {
                 System.out.print("Entrer que des entiers : ");
                 sc.next();
             }
-        }
+        }*/
+        Arrays.sort(result);
         System.out.print(Arrays.toString(result) + " ");
+    }
+
+    public static void saisie(int saisie, int[] t){
+        Scanner sc  = new Scanner(in);
+        try{
+            saisie =  sc.nextInt();
+            isIn(t,saisie);
+        } catch (Exception e){
+            System.out.print("Entrer que des entiers : ");
+            saisie(saisie,t);
+        }
     }
     public static boolean isIn(int[] result, int saisie){
         for (int i = 0; i < result.length; i++){
             if (saisie == result[i]){
                 result[i] = saisie*5;
+                System.out.println(saisie + " existe dans le tableau");
                 return true;
             }
         }
+        System.out.println(saisie + " existe dans le tableau");
         return false;
     }
 }
